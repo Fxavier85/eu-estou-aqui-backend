@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
@@ -8,7 +9,7 @@ app.use(express.json());
 
 // Conexão com o CockroachDB
 const pool = new Pool({
-  connectionString: 'postgresql://fernando:jSfy8wDUt8D54nRPsEEfQA@eu-estou-aqui-10239.j77.aws-us-west-2.cockroachlabs.cloud:26257/presencas?sslmode=verify-full',
+  connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
 
