@@ -16,11 +16,11 @@ const pool = new Pool({
 
 // Rota para registrar presença
 app.post('/registrar-presenca', async (req, res) => {
-  const { id, eventoId, latitude, longitude, precisao } = req.body;
+  const { id, eventoId } = req.body;
   try {
     await pool.query(
-      'INSERT INTO presencas (id, eventoId, latitude, longitude, precisao) VALUES ($1, $2, $3, $4, $5)',
-      [id, eventoId, latitude, longitude, precisao]
+      'INSERT INTO presencas (id, eventoId) VALUES ($1, $2)',
+      [id, eventoId]
     );
     res.status(200).json({ success: true });
   } catch (error) {
